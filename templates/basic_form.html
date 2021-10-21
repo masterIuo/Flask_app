@@ -1,7 +1,23 @@
 <form method="post">
-    {{ form.csrf_token }}
-    {{ form.username.label }}<br>{{ form.username }}<br>
-    {{ form.password.label }}<br>{{ form.password }}<br>
-    {{ form.remember.label }} {{ form.remember}}<br>
-    {{ form.submit }}<br>
+    <div class="form-control">
+        {{ form.username.label }}
+        {{ form.username(class='form-control') }}<br>
+        {% for message in form.username.errors %}
+            <small class="error">{{ message }}</small>
+        {% endfor %}
+    </div>
+    <div class="form-control">
+        {{ form.password.label }}
+        {{ form.password(class='form-control') }}<br>
+        {% for message in form.password.errors %}
+            <small class="error">{{ message }}</small>
+        {% endfor %}
+    </div>
+    <div class="form-check">
+        {{ form.remember.label }}
+        {{ form.remember(class='form-check-input') }}
+    </div>
+    <div class="btn btn-primary">
+        {{ form.submit(class='btn btn-primary') }}
+    </div>
 </form>
